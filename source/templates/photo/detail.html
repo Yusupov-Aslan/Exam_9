@@ -4,12 +4,17 @@
     <div class="container">
         <img src="{{ photo.image.url }}" style=" width: 10rem; height:
                 10rem; background-repeat: no-repeat;" alt="">
-        <p>{{ photo.description }}</p>
-        <p>{{ photo.user }}</p>
-        <p>{{ photo.album }}</p>
-        <p></p>
+        <p>Описание: {{ photo.description }}</p>
+        <p>Автор: {{ photo.user }}</p>
+        {% if photo.album %}
+            <a href="{% url 'gallery:album_detail' photo.album.pk %}" ><p>Альбом:{{ photo.album }}</p></a>
+        {% endif %}
+        <p>Дата создания: {{ photo.created_at }}</p>
     </div>
-
-    <a href="{% url 'gallery:photo_update' photo.id %}" class="btn btn-primary">Редактировать</a>
-    <a href="{% url 'gallery:photo_delete' photo.id %}" class="btn btn-danger">Удалить</a>
+    {% if request.user == photo.user or perms.gallery.change_photo %}
+        <a href="{% url 'gallery:photo_update' photo.id %}" class="btn btn-primary">Редактировать</a>
+    {% endif %}
+    {% if request.user == photo.user or perms.gallery.delete_photo %}
+        <a href="{% url 'gallery:photo_delete' photo.id %}" class="btn btn-danger">Удалить</a>
+    {% endif %}
 {% endblock %}

@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}Главная{% endblock %}
 {% block content %}
-    <a href="{% url 'gallery:album_update' album.id %}" class="btn btn-primary">Редактировать</a>
-    <a href="{% url 'gallery:album_delete' album.id %}" class="btn btn-danger">Удалить</a>
+    {% if request.user == album.user or perms.gallery.change_album %}
+        <a href="{% url 'gallery:album_update' album.id %}" class="btn btn-primary">Редактировать</a>
+    {% endif %}
+    {% if request.user == album.user or perms.gallery.delete_album %}
+        <a href="{% url 'gallery:album_delete' album.id %}" class="btn btn-danger">Удалить</a>
+    {% endif %}
     <div>
         <p>Название:{{ album.title }}</p>
-        <br>
         <p>Описание:{{ album.description }}</p>
     </div>
+    <h3>Фото</h3>
     <div class="row">
         {% for p in album.photos.all %}
             <div class="col-md-3">
