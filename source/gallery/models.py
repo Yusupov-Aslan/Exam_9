@@ -11,14 +11,21 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     is_private = models.BooleanField(default=False, blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Photo(models.Model):
     image = models.FileField(verbose_name='Изображение', upload_to='images')
     description = models.CharField(max_length=128, verbose_name="Подпись")
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, verbose_name='Автор', related_name='photos')
-    album = models.ForeignKey('gallery.Album', on_delete=models.CASCADE, blank=True, null=True, verbose_name='Альбом', related_name='photos')
+    album = models.ForeignKey('gallery.Album', on_delete=models.CASCADE, blank=True,
+                              null=True, verbose_name='Альбом', related_name='photos')
     is_private = models.BooleanField(default=False, blank=True, verbose_name='Приватный?')
+
+    def __str__(self):
+        return self.description
 
 
 class FavoriteAlbum(models.Model):

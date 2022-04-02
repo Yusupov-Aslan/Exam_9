@@ -13,7 +13,7 @@
 
 {% block content %}
     <h1>Профиль пользователя {{ user_object.username }}</h1>
-    <p><strong>Почта: </strong>{{ user_object.email|default:"Не указана"}}</p>
+    <p><strong>Почта: </strong>{{ user_object.email|default:"Не указана" }}</p>
     <p><strong>Дата рождения: </strong>{{ user_object.profile.birth_date|date:'d.m.Y'|default:"Не указана" }}</p>
     <p><strong>Фамилия: </strong>{{ user_object.last_name|default:"Не указана" }}</p>
     <p><strong>Имя: </strong>{{ user_object.first_name|default:"Не указанo" }}</p>
@@ -22,6 +22,26 @@
         <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
     {% endif %}
 
-    {% include "partial/article_list.html" %}
+    <h3>Альбомы</h3><br>
+    <div class="row">
+        {% for a in user_object.albums.all %}
+            <div class="col-md-3">
+                <a href="{% url 'gallery:album_detail' a.pk %}">Название: d{{ a.title }}</a>
+                <br>
+                <p>Описание: {{ a.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h3>Фото</h3><br>
+    <div class="row">
+        {% for p in user_object.photos.all %}
+            <div class="col-md-3">
+                <img src="{{ p.image.url }}" style=" width: 10rem; height:
+                10rem; background-repeat: no-repeat;" alt="">
+                <br>
+                <a href="{% url 'gallery:photo_detail' p.id %}">{{ p.description }}</a>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock content %}

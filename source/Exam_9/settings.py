@@ -134,4 +134,5 @@ MEDIA_URL = 'media/'
 
 LOGIN_REDIRECT_URL = 'gallery:index'
 LOGOUT_REDIRECT_URL = 'gallery:index'
+LOGIN_URL = 'accounts:login'
 

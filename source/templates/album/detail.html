@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}Главная{% endblock %}
 {% block content %}
-    <a href="{% url 'gallery:photo_create' %}" class="btn btn-primary">Создать Фото</a>
+    <a href="{% url 'gallery:album_update' album.id %}" class="btn btn-primary">Редактировать</a>
+    <a href="{% url 'gallery:album_delete' album.id %}" class="btn btn-danger">Удалить</a>
+    <div>
+        <p>Название:{{ album.title }}</p>
+        <br>
+        <p>Описание:{{ album.description }}</p>
+    </div>
     <div class="row">
-        {% for p in photos %}
+        {% for p in album.photos.all %}
             <div class="col-md-3">
                 <img src="{{ p.image.url }}" style=" width: 10rem; height:
                 10rem; background-repeat: no-repeat;" alt="">

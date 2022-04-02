@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, TemplateView, DeleteView
 
-from gallery.forms import PhotoForm
+from gallery.forms import PhotoForm, AlbumForm
 from gallery.models import Photo, Album
 
 
@@ -62,7 +62,41 @@ class PhotoDeleteView(LoginRequiredMixin, DeleteView):
 
 class AlbumListView(ListView):
     model = Album
-    context_object_name = 'album'
+    context_object_name = 'albums'
     queryset = Album.objects.filter(is_private=False).order_by("-created_at")
     template_name = 'album/list.html'
 
+
+class AlbumDetailView(DetailView):
+    template_name = "album/detail.html"
+    model = Album
+    context_object_name = 'album'
+
+
+class AlbumCreateView(LoginRequiredMixin, CreateView):
+    model = Album
+    form_class = AlbumForm
+    template_name = "album/create.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("gallery:album_detail", kwargs={"pk": self.object.pk})
+
+
+class AlbumUpdateView(LoginRequiredMixin, UpdateView):
+    model = Album
+    context_object_name = 'album'
+    template_name = 'album/update.html'
+    form_class = AlbumForm
+
+    def get_success_url(self):
+        return reverse("gallery:album_detail", kwargs={"pk": self.object.pk})
+
+
+class AlbumDeleteView(LoginRequiredMixin, DeleteView):
+    model = Album
+    template_name = 'album/delete.html'
+    success_url = reverse_lazy('gallery:album_list')

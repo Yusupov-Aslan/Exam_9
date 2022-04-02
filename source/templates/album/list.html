@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Главная{% endblock %}
 {% block content %}
+    <a href="{% url 'gallery:album_create' %}" class="btn btn-primary">Создать Альбом</a>
     <div class="row">
         {% for a in albums %}
             <div class="col-md-3">
-                Название: <a href="{% url 'gallery:album_detail' a.id %}">{{ a.title }}</a>
+                <a href="{% url 'gallery:album_detail' a.pk %}">Название: d{{ a.title }}</a>
                 <br>
                 <p>Описание: {{ a.description }}</p>
             </div>

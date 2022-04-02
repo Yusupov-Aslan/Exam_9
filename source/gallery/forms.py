@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 
-from gallery.models import Photo
+from gallery.models import Photo, Album
 from django import forms
 
 UserModel = get_user_model()
@@ -19,3 +19,9 @@ class PhotoForm(forms.ModelForm):
         if user_id:
             user = UserModel.objects.get(id=user_id)
             self.fields['album'].queryset = user.albums.all()
+
+
+class AlbumForm(forms.ModelForm):
+    class Meta:
+        model = Album
+        exclude = ('user',)
