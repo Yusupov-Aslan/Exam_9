@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+    <div class="row">
+        {% for a in albums %}
+            <div class="col-md-3">
+                Название: <a href="{% url 'gallery:album_detail' a.id %}">{{ a.title }}</a>
+                <br>
+                <p>Описание: {{ a.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'gallery',
+    'accounts'
 
 ]
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'Exam_9.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,6 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Exam_9.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Profile'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -122,3 +124,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT = 'staticfiles/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
+
+LOGIN_REDIRECT_URL = 'gallery:index'
+LOGOUT_REDIRECT_URL = 'gallery:index'
+

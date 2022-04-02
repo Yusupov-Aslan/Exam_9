@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Детальный просмотр фото{% endblock %}
+{% block content %}
+    <div class="container">
+        <img src="{{ photo.image.url }}" style=" width: 10rem; height:
+                10rem; background-repeat: no-repeat;" alt="">
+        <p>{{ photo.description }}</p>
+        <p>{{ photo.user }}</p>
+        <p>{{ photo.album }}</p>
+        <p></p>
+    </div>
+
+    <a href="{% url 'gallery:photo_update' photo.id %}" class="btn btn-primary">Редактировать</a>
+    <a href="{% url 'gallery:photo_delete' photo.id %}" class="btn btn-danger">Удалить</a>
+{% endblock %}
