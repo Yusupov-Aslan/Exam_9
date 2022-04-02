@@ -1,0 +1,189 @@
+[
+{
+    "model": "gallery.album",
+    "pk": 3,
+    "fields": {
+        "title": "Природа",
+        "description": "Общая красота",
+        "user": 5,
+        "created_at": "2022-04-02T12:18:00.794Z",
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.album",
+    "pk": 4,
+    "fields": {
+        "title": "разное",
+        "description": "что угодное",
+        "user": 5,
+        "created_at": "2022-04-02T12:21:39.297Z",
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.album",
+    "pk": 5,
+    "fields": {
+        "title": "Свой",
+        "description": "Около",
+        "user": 4,
+        "created_at": "2022-04-02T12:32:58.989Z",
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.album",
+    "pk": 6,
+    "fields": {
+        "title": "Welcome",
+        "description": "",
+        "user": 3,
+        "created_at": "2022-04-02T12:36:21.565Z",
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.album",
+    "pk": 7,
+    "fields": {
+        "title": "Ninja",
+        "description": "",
+        "user": 3,
+        "created_at": "2022-04-02T12:37:27.092Z",
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 6,
+    "fields": {
+        "image": "images/Человек_и_природа.jpg",
+        "description": "Человек и природа",
+        "created_at": "2022-04-02T12:18:35.567Z",
+        "user": 5,
+        "album": 3,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 7,
+    "fields": {
+        "image": "images/Живая-природа.jpg",
+        "description": "живая природа",
+        "created_at": "2022-04-02T12:19:31.581Z",
+        "user": 5,
+        "album": 3,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 8,
+    "fields": {
+        "image": "images/nature-2689710_960_720.webp",
+        "description": "природо ведение",
+        "created_at": "2022-04-02T12:20:24.180Z",
+        "user": 5,
+        "album": 3,
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 9,
+    "fields": {
+        "image": "images/leo_Jt8xnSM.jpg",
+        "description": "лев",
+        "created_at": "2022-04-02T12:27:24.416Z",
+        "user": 5,
+        "album": 4,
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 10,
+    "fields": {
+        "image": "images/22f513fac7d9ae31b6b5dbd733c8e01b.jpg",
+        "description": "Гладиатор",
+        "created_at": "2022-04-02T12:27:54.293Z",
+        "user": 5,
+        "album": 4,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 11,
+    "fields": {
+        "image": "images/премного_благодарен_d2ZYgmW.jpg",
+        "description": "theatre",
+        "created_at": "2022-04-02T12:32:32.832Z",
+        "user": 4,
+        "album": null,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 12,
+    "fields": {
+        "image": "images/photo_2022-04-02_18-34-31.jpg",
+        "description": "want",
+        "created_at": "2022-04-02T12:35:10.331Z",
+        "user": 4,
+        "album": 5,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 13,
+    "fields": {
+        "image": "images/photo_2022-04-02_18-34-46.jpg",
+        "description": "kill",
+        "created_at": "2022-04-02T12:35:38.893Z",
+        "user": 4,
+        "album": null,
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 14,
+    "fields": {
+        "image": "images/photo_2022-04-02_18-34-40.jpg",
+        "description": "Now",
+        "created_at": "2022-04-02T12:36:35.945Z",
+        "user": 3,
+        "album": 6,
+        "is_private": false
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 15,
+    "fields": {
+        "image": "images/photo_2022-04-02_18-34-34.jpg",
+        "description": "drink",
+        "created_at": "2022-04-02T12:36:52.580Z",
+        "user": 3,
+        "album": null,
+        "is_private": true
+    }
+},
+{
+    "model": "gallery.photo",
+    "pk": 16,
+    "fields": {
+        "image": "images/photo_2022-04-02_18-34-27.jpg",
+        "description": "Gladiator",
+        "created_at": "2022-04-02T12:37:53.987Z",
+        "user": 3,
+        "album": 7,
+        "is_private": false
+    }
+}
+]
