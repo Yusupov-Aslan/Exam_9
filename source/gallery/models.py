@@ -1,5 +1,8 @@
+import uuid
+
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 
 UserModel = get_user_model()
 
@@ -36,3 +39,9 @@ class FavoriteAlbum(models.Model):
 class FavoritePhoto(models.Model):
     photo = models.ForeignKey('gallery.Photo', on_delete=models.CASCADE)
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='favorite_photos')
+
+
+class PhotoToken(models.Model):
+    photo = models.ForeignKey('gallery.Photo', on_delete=models.CASCADE, related_name='tokens')
+    token = models.UUIDField(default=uuid.uuid4())
+

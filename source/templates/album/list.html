@@ -5,7 +5,7 @@
     <div class="row">
         {% for a in albums %}
             <div class="col-md-3">
-                <a href="{% url 'gallery:album_detail' a.pk %}">Название: d{{ a.title }}</a>
+                <a href="{% url 'gallery:album_detail' a.pk %}">Название: {{ a.title }}</a>
                 <br>
                 <p>Описание: {{ a.description }}</p>
             </div>

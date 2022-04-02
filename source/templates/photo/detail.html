@@ -7,14 +7,20 @@
         <p>Описание: {{ photo.description }}</p>
         <p>Автор: {{ photo.user }}</p>
         {% if photo.album %}
-            <a href="{% url 'gallery:album_detail' photo.album.pk %}" ><p>Альбом:{{ photo.album }}</p></a>
+            <a href="{% url 'gallery:album_detail' photo.album.pk %}"><p>Альбом:{{ photo.album }}</p></a>
         {% endif %}
         <p>Дата создания: {{ photo.created_at }}</p>
+        {% if request.user == photo.user and photo.tokens.first %}
+            <p>Поделиться: {{ request.get_host }}{% url 'gallery:photo_token_detail' photo.tokens.first.token %}</p>
+        {% endif %}
     </div>
-    {% if request.user == photo.user or perms.gallery.change_photo %}
-        <a href="{% url 'gallery:photo_update' photo.id %}" class="btn btn-primary">Редактировать</a>
-    {% endif %}
-    {% if request.user == photo.user or perms.gallery.delete_photo %}
-        <a href="{% url 'gallery:photo_delete' photo.id %}" class="btn btn-danger">Удалить</a>
+    {% if request.user == photo.user %}
+        <a href="{% url 'gallery:photo_token_generate' photo.id %}" class="btn btn-info">Сгенерировать ссылку</a>
+        {% if perms.gallery.change_photo %}
+            <a href="{% url 'gallery:photo_update' photo.id %}" class="btn btn-primary">Редактировать</a>
+        {% endif %}
+        {% if perms.gallery.delete_photo %}
+            <a href="{% url 'gallery:photo_delete' photo.id %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
     {% endif %}
 {% endblock %}

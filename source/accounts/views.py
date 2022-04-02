@@ -1,12 +1,10 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, UpdateView
 
 from accounts.forms import MyUserCreationForm, UserUpdateForm, PasswordChangeForm
-from accounts.models import Profile
 
 UserModel = get_user_model()
 
@@ -18,7 +16,6 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        Profile.objects.create(user=user)
         login(self.request, user)
         return redirect(self.get_success_url())
 
